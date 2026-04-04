@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>Readverse — Belajar Baca Bahasa Inggris Untuk Anak</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Baloo+2:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light only;
+    --yellow: #FFD23F;
+    --orange: #FF6B35;
+    --blue: #3A86FF;
+    --green: #06D6A0;
+    --pink: #FF6B9D;
+    --purple: #845EC2;
+    --dark: #1A1A2E;
+    --cream: #FFFBF0;
+    --red: #EF233C;
+  }
+
+  html {
+    color-scheme: light only;
+    background-color: #FFFBF0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #FFFBF0;
+    color: #1A1A2E;
+    overflow-x: hidden;
+  }
+
+  /* ====== HERO ====== */
+  .hero {
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F3460 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 20% 30%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 80% 10%, rgba(255,210,63,0.8) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 60%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(3px 3px at 30% 80%, rgba(58,134,255,0.6) 0%, transparent 100%),
+      radial-gradient(2px 2px at 70% 40%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 50%, rgba(255,107,157,0.7) 0%, transparent 100%),
+      radial-gradient(2px 2px at 90% 70%, rgba(255,255,255,0.5) 0%, transparent 100%);
+    background-size: 300px 300px, 250px 250px, 200px 200px, 350px 350px, 150px 150px, 400px 400px, 180px 180px;
+    animation: twinkle 4s ease-in-out infinite alternate;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+
+  .floating-letters {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .fl {
+    position: absolute;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    opacity: 0.08;
+    color: white;
+    animation: floatLetter 6s ease-in-out infinite;
+  }
+
+  .fl:nth-child(1) { top: 5%; left: 5%; font-size: 80px; animation-delay: 0s; }
+  .fl:nth-child(2) { top: 15%; right: 8%; font-size: 60px; animation-delay: 1s; color: var(--yellow); }
+  .fl:nth-child(3) { bottom: 20%; left: 10%; font-size: 70px; animation-delay: 2s; color: var(--pink); }
+  .fl:nth-child(4) { bottom: 10%; right: 15%; font-size: 90px; animation-delay: 0.5s; color: var(--green); }
+  .fl:nth-child(5) { top: 50%; left: 2%; font-size: 50px; animation-delay: 3s; }
+  .fl:nth-child(6) { top: 40%; right: 3%; font-size: 65px; animation-delay: 1.5s; color: var(--orange); }
+
+  @keyframes floatLetter {
+    0%, 100% { transform: translateY(0px) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,210,63,0.2);
+    border: 1.5px solid var(--yellow);
+    color: var(--yellow);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.6s ease forwards;
+  }
+
+  .hero-badge::before { content: '⭐'; }
+
+  .hero-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.7s ease forwards;
+  }
+
+  .hero-title .highlight {
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+
+  .hero-subtitle {
+    color: rgba(255,255,255,0.75);
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    animation: fadeInDown 0.8s ease forwards;
+  }
+
+  .hero-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 35px;
+    animation: fadeInDown 0.9s ease forwards;
+  }
+
+  .hero-feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.85);
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .hero-feature .icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--green), #00b894);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .price-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 24px;
+    animation: fadeInDown 1s ease forwards;
+  }
+
+  .price-label {
+    color: rgba(255,255,255,0.5);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .price-old {
+    color: rgba(255,255,255,0.4);
+    font-size: 16px;
+    text-decoration: line-through;
+  }
+
+  .price-main {
+    font-family: 'Baloo 2', cursive;
+    font-size: 52px;
+    font-weight: 800;
+    color: var(--yellow);
+    line-height: 1;
+    margin: 4px 0;
+  }
+
+  .price-note {
+    color: var(--green);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .discount-badge {
+    display: inline-block;
+    background: var(--red);
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-left: 12px;
+    vertical-align: middle;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .cta-btn {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    color: var(--dark);
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s;
+    box-shadow: 0 8px 30px rgba(255,107,53,0.5);
+    animation: fadeInUp 1.1s ease forwards;
+    letter-spacing: 0.5px;
+  }
+
+  .cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(255,107,53,0.7);
+  }
+
+  .cta-sub {
+    color: rgba(255,255,255,0.4);
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 0.8s ease forwards;
+  }
+
+  .book-mockup {
+    position: relative;
+    width: 300px;
+  }
+
+  .book-cover {
+    background: linear-gradient(160deg, #fff9f0, #fff3dc);
+    border-radius: 16px;
+    padding: 30px 25px;
+    box-shadow:
+      -12px 12px 0px var(--orange),
+      0 30px 80px rgba(0,0,0,0.5),
+      inset 0 0 0 1px rgba(255,210,63,0.3);
+    text-align: center;
+    position: relative;
+    animation: bookFloat 3s ease-in-out infinite;
+  }
+
+  @keyframes bookFloat {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+
+  .book-cover-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .book-cover-emoji {
+    font-size: 70px;
+    display: block;
+    margin: 10px 0;
+  }
+
+  .book-cover-sub {
+    font-size: 13px;
+    color: #666;
+    font-weight: 600;
+  }
+
+  .book-pages {
+    position: absolute;
+    right: -15px;
+    top: 8px;
+    width: 20px;
+    height: calc(100% - 16px);
+    background: linear-gradient(to right, #e8e8e8, #f5f5f5);
+    border-radius: 0 6px 6px 0;
+    box-shadow: 4px 0 8px rgba(0,0,0,0.2);
+  }
+
+  .floating-tags {
+    position: absolute;
+    top: -20px;
+    right: -30px;
+    background: var(--green);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 8px 14px;
+    border-radius: 100px;
+    box-shadow: 0 4px 15px rgba(6,214,160,0.5);
+    animation: floatTag 2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes floatTag {
+    0%, 100% { transform: translateY(0) rotate(3deg); }
+    50% { transform: translateY(-8px) rotate(-3deg); }
+  }
+
+  .floating-tags2 {
+    position: absolute;
+    bottom: -15px;
+    left: -25px;
+    background: var(--pink);
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 8px 14px;
+    border-radius: 100px;
+    box-shadow: 0 4px 15px rgba(255,107,157,0.5);
+    animation: floatTag2 2.5s ease-in-out infinite;
+    white-space: nowrap;
+  }
+
+  @keyframes floatTag2 {
+    0%, 100% { transform: translateY(0) rotate(-4deg); }
+    50% { transform: translateY(-8px) rotate(4deg); }
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .stat-card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Baloo 2', cursive;
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--yellow);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 600;
+  }
+
+  /* ====== ABOUT ====== */
+  .section {
+    padding: 80px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: transparent;
+  }
+
+  /* Wrapper transparan butuh parent putih */
+  .section-wrapper {
+    background-color: #FFFBF0;
+  }
+
+  .section-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    color: white;
+    font-size: 12px;
+    font-weight: 800;
+    padding: 5px 16px;
+    border-radius: 100px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: #555;
+    line-height: 1.8;
+    max-width: 600px;
+  }
+
+  /* ====== WHAT'S INSIDE ====== */
+  .inside-section {
+    background: linear-gradient(135deg, #f0f4ff, #fff5f0);
+    background-color: #f0f4ff; /* fallback untuk iOS dark mode */
+    padding: 80px 30px;
+  }
+
+  .inside-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+
+  .inside-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: all 0.3s;
+    border-top: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inside-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--card-color, var(--blue));
+  }
+
+  .inside-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  }
+
+  .card-icon {
+    font-size: 44px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .card-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 10px;
+  }
+
+  .card-desc {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  /* ====== VOCAB PREVIEW ====== */
+  .vocab-section {
+    padding: 80px 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: transparent;
+  }
+
+  .vocab-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+    justify-content: center;
+  }
+
+  .vocab-tag {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-weight: 800;
+    font-size: 15px;
+    transition: all 0.3s;
+    cursor: default;
+    animation: popIn 0.4s ease forwards;
+    opacity: 0;
+    border: 2px solid;
+  }
+
+  .vocab-tag:hover { transform: scale(1.1) rotate(-2deg); }
+
+  @keyframes popIn {
+    from { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+    to { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  /* ====== FOR WHO ====== */
+  .forwho-section {
+    background: linear-gradient(135deg, #1A1A2E, #16213E);
+    padding: 80px 30px;
+    color: white;
+  }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+
+  .forwho-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .forwho-card:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+  }
+
+  .forwho-emoji { font-size: 50px; display: block; margin-bottom: 14px; }
+  .forwho-title { font-family: 'Baloo 2', cursive; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .forwho-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+  /* ====== TESTIMONIALS ====== */
+  .testi-section {
+    padding: 80px 30px;
+    background-color: #FFFBF0;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 40px auto 0;
+  }
+
+  .testi-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    position: relative;
+    transition: all 0.3s;
+  }
+
+  .testi-card:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(0,0,0,0.1); }
+
+  .testi-quote {
+    font-size: 60px;
+    font-family: Georgia, serif;
+    color: var(--yellow);
+    line-height: 0.5;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .testi-text {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testi-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .testi-name { font-weight: 800; font-size: 15px; color: var(--dark); }
+  .testi-role { font-size: 13px; color: #888; }
+  .testi-stars { color: var(--yellow); font-size: 14px; letter-spacing: 2px; }
+
+  /* ====== FAQ ====== */
+  .faq-section {
+    padding: 80px 30px;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    border: 1px solid #f0f0f0;
+  }
+
+  .faq-q {
+    padding: 20px 24px;
+    font-weight: 800;
+    font-size: 16px;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .faq-q::after { content: '+'; font-size: 22px; color: var(--orange); flex-shrink: 0; }
+  .faq-item.open .faq-q::after { content: '−'; }
+
+  .faq-a {
+    display: none;
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.8;
+    border-top: 1px solid #f5f5f5;
+    padding-top: 16px;
+  }
+
+  .faq-item.open .faq-a { display: block; }
+
+  /* ====== CTA FINAL ====== */
+  .cta-final {
+    background: linear-gradient(135deg, var(--orange), var(--pink));
+    padding: 80px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='15'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .cta-final-inner { position: relative; max-width: 600px; margin: 0 auto; }
+
+  .cta-final-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    color: white;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  }
+
+  .cta-final-sub {
+    color: rgba(255,255,255,0.85);
+    font-size: 18px;
+    margin-bottom: 36px;
+    line-height: 1.7;
+  }
+
+  .cta-final-btn {
+    display: inline-block;
+    background: white;
+    color: var(--orange);
+    font-family: 'Baloo 2', cursive;
+    font-size: 22px;
+    font-weight: 800;
+    padding: 22px 60px;
+    border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+  }
+
+  .cta-final-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .guarantee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    margin-top: 20px;
+  }
+
+  /* ====== FOOTER ====== */
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+  }
+
+  /* ====== NAV ====== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(26,26,46,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+  }
+
+  .nav-logo span { color: var(--yellow); }
+
+  .nav-cta {
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 800;
+    padding: 10px 24px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover { transform: scale(1.05); }
+
+  /* ====== ANIMATIONS ====== */
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ====== SOCIAL PROOF BAR ====== */
+  .proof-bar {
+    background: var(--yellow);
+    padding: 14px 30px;
+    overflow: hidden;
+  }
+
+  .proof-bar-inner {
+    display: flex;
+    gap: 60px;
+    animation: scrollProof 20s linear infinite;
+    white-space: nowrap;
+  }
+
+  .proof-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--dark);
+    flex-shrink: 0;
+  }
+
+  @keyframes scrollProof {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+
+  /* ============================================================
+     RESPONSIVE — TABLET (max 1024px)
+  ============================================================ */
+  @media (max-width: 1024px) {
+    .hero-content {
+      gap: 40px;
+      padding: 100px 24px 60px;
+    }
+    .hero-title { font-size: 42px; }
+    .price-main { font-size: 44px; }
+    .book-mockup { width: 260px; }
+    .inside-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .forwho-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .testi-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .section { padding: 60px 24px; }
+    .inside-section { padding: 60px 24px; }
+    .forwho-section { padding: 60px 24px; }
+    .testi-section { padding: 60px 24px; }
+    .faq-section { padding: 60px 24px; }
+    .cta-final { padding: 60px 24px; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — MOBILE (max 768px)
+  ============================================================ */
+  @media (max-width: 768px) {
+
+    /* NAV */
+    nav { padding: 12px 16px; }
+    .nav-logo { font-size: 15px; }
+    .nav-cta { font-size: 12px; padding: 8px 16px; }
+
+    /* HERO — stack vertically, text center */
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 36px;
+      padding: 90px 20px 50px;
+      text-align: center;
+    }
+    .hero-badge { font-size: 11px; }
+    .hero-title { font-size: 32px; }
+    .hero-subtitle { font-size: 16px; }
+    .hero-features { align-items: flex-start; text-align: left; }
+    .hero-feature { font-size: 14px; }
+
+    /* Price box */
+    .price-box { padding: 20px; }
+    .price-main { font-size: 40px; }
+    .discount-badge { font-size: 11px; }
+    .cta-btn { font-size: 17px; padding: 18px; }
+
+    /* Book mockup — smaller, centered */
+    .hero-visual { justify-content: center; }
+    .book-mockup { width: 210px; }
+    .book-cover-title { font-size: 22px; }
+    .book-cover-emoji { font-size: 55px; }
+    .floating-tags { font-size: 11px; padding: 6px 10px; top: -14px; right: -14px; }
+    .floating-tags2 { font-size: 11px; padding: 6px 10px; bottom: -12px; left: -14px; }
+
+    /* Stats row */
+    .stats-row { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .stat-num { font-size: 24px; }
+    .stat-label { font-size: 10px; }
+
+    /* Floating letters — hide on mobile to reduce clutter */
+    .fl { display: none; }
+
+    /* Section headings */
+    .section-title { font-size: 26px; }
+    .section-desc { font-size: 15px; }
+    .section { padding: 50px 20px; }
+
+    /* Inside grid — 1 column */
+    .inside-section { padding: 50px 20px; }
+    .inside-grid { grid-template-columns: 1fr; gap: 16px; }
+    .inside-card { padding: 24px; }
+    .card-icon { font-size: 36px; }
+    .card-title { font-size: 18px; }
+
+    /* Vocab cloud — smaller tags */
+    .vocab-section { padding: 50px 20px; }
+    .vocab-tag { font-size: 13px; padding: 8px 14px; }
+
+    /* For who — 2 columns on mobile */
+    .forwho-section { padding: 50px 20px; }
+    .forwho-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .forwho-card { padding: 20px 16px; }
+    .forwho-emoji { font-size: 36px; }
+    .forwho-title { font-size: 15px; }
+    .forwho-desc { font-size: 13px; }
+
+    /* Testimonials — 1 column */
+    .testi-section { padding: 50px 20px; }
+    .testi-grid { grid-template-columns: 1fr; gap: 16px; }
+    .testi-card { padding: 22px; }
+    .testi-text { font-size: 14px; }
+
+    /* FAQ */
+    .faq-section { padding: 50px 20px; }
+    .faq-q { font-size: 14px; padding: 16px 18px; }
+    .faq-a { font-size: 14px; padding: 0 18px 16px; padding-top: 14px; }
+
+    /* CTA Final */
+    .cta-final { padding: 60px 20px; }
+    .cta-final-title { font-size: 26px; }
+    .cta-final-sub { font-size: 15px; }
+    .cta-final-btn { font-size: 17px; padding: 18px 36px; display: block; text-align: center; }
+    .guarantee { flex-direction: column; gap: 6px; text-align: center; font-size: 13px; }
+
+    /* Proof bar */
+    .proof-bar { padding: 10px 0; }
+    .proof-item { font-size: 12px; }
+  }
+
+  /* ============================================================
+     RESPONSIVE — SMALL PHONE (max 480px)
+  ============================================================ */
+  @media (max-width: 480px) {
+    nav { padding: 10px 14px; }
+    .nav-logo { font-size: 14px; }
+    .nav-cta { font-size: 11px; padding: 7px 12px; }
+
+    .hero-content { padding: 80px 16px 44px; gap: 28px; }
+    .hero-title { font-size: 28px; }
+    .hero-subtitle { font-size: 14px; }
+    .hero-feature { font-size: 13px; }
+
+    .price-main { font-size: 34px; }
+    .cta-btn { font-size: 15px; padding: 16px; border-radius: 12px; }
+
+    .book-mockup { width: 190px; }
+    .book-cover { padding: 22px 18px; }
+    .book-cover-title { font-size: 19px; }
+    .book-cover-emoji { font-size: 46px; }
+
+    .stats-row { gap: 8px; }
+    .stat-num { font-size: 20px; }
+    .stat-label { font-size: 9px; }
+
+    .section-title { font-size: 22px; }
+    .section { padding: 40px 16px; }
+    .inside-section, .forwho-section,
+    .testi-section, .faq-section { padding: 40px 16px; }
+    .vocab-section { padding: 40px 16px; }
+
+    /* For who — 1 column on very small */
+    .forwho-grid { grid-template-columns: 1fr; }
+
+    .cta-final { padding: 50px 16px; }
+    .cta-final-title { font-size: 22px; }
+    .cta-final-btn { font-size: 16px; padding: 16px 28px; }
+
+    .faq-q { font-size: 13px; padding: 14px 16px; gap: 10px; }
+    .faq-a { font-size: 13px; }
+
+    footer { padding: 24px 16px; font-size: 12px; }
+  }
+
+  /* ============================================================
+     TOUCH — improve tap targets & remove hover on touch
+  ============================================================ */
+  @media (hover: none) {
+    .inside-card:hover,
+    .forwho-card:hover,
+    .testi-card:hover { transform: none; box-shadow: none; }
+    .cta-btn:hover,
+    .nav-cta:hover,
+    .cta-final-btn:hover { transform: none; box-shadow: none; }
+    .vocab-tag:hover { transform: none; }
+  }
+
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">📚 Read<span>verse</span></div>
+  <a href="#beli" class="nav-cta">Beli Sekarang →</a>
+</nav>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-bar-inner">
+    <div class="proof-item">⭐ Lebih dari 500+ pembeli puas</div>
+    <div class="proof-item">📥 Langsung download setelah bayar</div>
+    <div class="proof-item">🎯 Cocok untuk anak usia 4–8 tahun</div>
+    <div class="proof-item">✅ 75 halaman konten berkualitas</div>
+    <div class="proof-item">🔒 100% aman & terpercaya</div>
+    <div class="proof-item">⭐ Lebih dari 500+ pembeli puas</div>
+    <div class="proof-item">📥 Langsung download setelah bayar</div>
+    <div class="proof-item">🎯 Cocok untuk anak usia 4–8 tahun</div>
+    <div class="proof-item">✅ 75 halaman konten berkualitas</div>
+    <div class="proof-item">🔒 100% aman & terpercaya</div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars"></div>
+  <div class="floating-letters">
+    <span class="fl">A</span>
+    <span class="fl">B</span>
+    <span class="fl">C</span>
+    <span class="fl">D</span>
+    <span class="fl">E</span>
+    <span class="fl">F</span>
+  </div>
+
+  <div class="hero-content">
+    <div>
+      <div class="hero-badge">Produk Digital PDF</div>
+      <h1 class="hero-title">
+        Cara Seru Anak Belajar
+        <span class="highlight">Bahasa Inggris!</span>
+      </h1>
+      <p class="hero-subtitle">
+        Buku kerja digital lengkap dengan kartu kata bergambar, latihan menulis huruf, dan soal pemahaman bacaan. Anak belajar sambil bermain! 🎉
+      </p>
+      <div class="hero-features">
+        <div class="hero-feature">
+          <div class="icon">✓</div>
+          75 halaman full color, siap cetak atau belajar digital
+        </div>
+        <div class="hero-feature">
+          <div class="icon">✓</div>
+          37+ kosakata dengan gambar menarik & tracing huruf
+        </div>
+        <div class="hero-feature">
+          <div class="icon">✓</div>
+          Soal latihan pilihan ganda untuk setiap tema
+        </div>
+        <div class="hero-feature">
+          <div class="icon">✓</div>
+          Format PDF — langsung download & pakai!
+        </div>
+      </div>
+
+      <div class="price-box" id="beli">
+        <div class="price-label">Harga Normal: <span class="price-old">Rp 129.000</span></div>
+        <div>
+          <span class="price-main">Rp 49.000</span>
+          <span class="discount-badge">HEMAT 62%</span>
+        </div>
+        <div class="price-note">✨ Harga promo terbatas — bayar sekali, pakai selamanya!</div>
+      </div>
+
+      <a href="#" class="cta-btn">
+        🛒 DAPATKAN SEKARANG — Rp 49.000
+      </a>
+      <p class="cta-sub">🔐 Pembayaran aman · 📥 Langsung terima file · 📄 Format PDF</p>
+    </div>
+
+    <div class="hero-visual">
+      <div class="book-mockup">
+        <div class="floating-tags">📖 75 Halaman!</div>
+        <div class="book-cover">
+          <div class="book-cover-title">Belajar Baca Bahasa Inggris</div>
+          <span class="book-cover-emoji">🐶🦁🐘</span>
+          <div class="book-cover-sub">Untuk Anak</div>
+        </div>
+        <div class="book-pages"></div>
+        <div class="floating-tags2">⭐ Full Color!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div style="background: white; padding: 40px 30px; border-bottom: 1px solid #f0f0f0;">
+  <div class="stats-row" style="max-width: 700px; margin: 0 auto;">
+    <div class="stat-card" style="background: #fff9f0; border: 2px solid #ffe0b2;">
+      <span class="stat-num" style="color: var(--orange);">75</span>
+      <span class="stat-label" style="color: #555;">Halaman Konten</span>
+    </div>
+    <div class="stat-card" style="background: #f0fff8; border: 2px solid #b2f5e0;">
+      <span class="stat-num" style="color: var(--green);">37+</span>
+      <span class="stat-label" style="color: #555;">Kosakata Tema</span>
+    </div>
+    <div class="stat-card" style="background: #f0f4ff; border: 2px solid #b2c8ff;">
+      <span class="stat-num" style="color: var(--blue);">500+</span>
+      <span class="stat-label" style="color: #555;">Pembeli Puas</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div style="background-color: #FFFBF0;">
+<div class="section" style="text-align: center;">
+  <div class="section-tag">Tentang Produk</div>
+  <h2 class="section-title" style="margin: 0 auto 16px;">Mengapa Produk Ini <br>Istimewa untuk Si Kecil?</h2>
+  <p class="section-desc" style="margin: 0 auto; text-align: center;">
+    Dirancang khusus untuk anak-anak yang baru mulai belajar Bahasa Inggris. Setiap halaman dikemas dengan gambar colorful yang menarik perhatian anak, membuat belajar terasa seperti bermain!
+  </p>
+</div>
+</div>
+
+  </div>
+</div>
+
+<!-- WHAT'S INSIDE -->
+<div class="inside-section">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="section-tag">Isi Produk</div>
+    <h2 class="section-title">Apa Saja yang Ada <br>di Dalam Buku Ini?</h2>
+  </div>
+  <div class="inside-grid">
+    <div class="inside-card" style="--card-color: var(--blue);">
+      <span class="card-icon">🖼️</span>
+      <div class="card-title">Kartu Kata Bergambar</div>
+      <p class="card-desc">Setiap kata disertai ilustrasi menarik dan penuh warna. Anak langsung bisa menghubungkan kata dengan gambar benda nyata.</p>
+    </div>
+    <div class="inside-card" style="--card-color: var(--orange);">
+      <span class="card-icon">✏️</span>
+      <div class="card-title">Latihan Tracing Huruf</div>
+      <p class="card-desc">Anak belajar menulis kata dengan panduan titik-titik. Melatih kemampuan menulis sekaligus mengingat ejaan kata dalam Bahasa Inggris.</p>
+    </div>
+    <div class="inside-card" style="--card-color: var(--green);">
+      <span class="card-icon">📖</span>
+      <div class="card-title">Teks Bacaan Pendek</div>
+      <p class="card-desc">Setiap tema dilengkapi bacaan pendek dalam Bahasa Inggris yang sederhana dan mudah dipahami anak-anak.</p>
+    </div>
+    <div class="inside-card" style="--card-color: var(--pink);">
+      <span class="card-icon">✅</span>
+      <div class="card-title">Soal Pilihan Ganda</div>
+      <p class="card-desc">Latihan soal 3 pilihan jawaban untuk menguji pemahaman anak setelah membaca. Cocok untuk evaluasi belajar di rumah.</p>
+    </div>
+    <div class="inside-card" style="--card-color: var(--purple);">
+      <span class="card-icon">🌈</span>
+      <div class="card-title">Full Color Design</div>
+      <p class="card-desc">Ilustrasi cerah dan warna-warni yang membuat anak tertarik dan tidak bosan. Bisa dicetak atau dipakai di tablet/komputer.</p>
+    </div>
+    <div class="inside-card" style="--card-color: var(--yellow);">
+      <span class="card-icon">🗂️</span>
+      <div class="card-title">37+ Tema Beragam</div>
+      <p class="card-desc">Hewan, buah, kendaraan, profesi, benda rumah — tema lengkap yang membangun kosakata dasar Bahasa Inggris anak secara menyeluruh.</p>
+    </div>
+  </div>
+</div>
+
+<!-- VOCAB PREVIEW -->
+<div class="vocab-section" style="text-align: center; background-color: #FFFBF0;">
+  <div class="section-tag">Preview Konten</div>
+  <h2 class="section-title">Kosakata yang Akan Dipelajari</h2>
+  <p style="color: #666; margin-bottom: 10px;">37+ tema seru yang mencakup dunia anak sehari-hari 🎯</p>
+  <div class="vocab-cloud">
+    <span class="vocab-tag" style="background: #fff0e0; color: var(--orange); border-color: var(--orange); animation-delay: 0.1s">🐶 Dog</span>
+    <span class="vocab-tag" style="background: #e8f5e9; color: #2e7d32; border-color: #4caf50; animation-delay: 0.15s">🐜 Ant</span>
+    <span class="vocab-tag" style="background: #fff9c4; color: #f57f17; border-color: #ffc107; animation-delay: 0.2s">🦁 Lion</span>
+    <span class="vocab-tag" style="background: #e3f2fd; color: #1565c0; border-color: #2196f3; animation-delay: 0.25s">🐘 Elephant</span>
+    <span class="vocab-tag" style="background: #fce4ec; color: #c62828; border-color: #f44336; animation-delay: 0.3s">🐝 Bee</span>
+    <span class="vocab-tag" style="background: #f3e5f5; color: #6a1b9a; border-color: #9c27b0; animation-delay: 0.35s">🦇 Bat</span>
+    <span class="vocab-tag" style="background: #e0f7fa; color: #00695c; border-color: #00bcd4; animation-delay: 0.4s">🐱 Cat</span>
+    <span class="vocab-tag" style="background: #fff0e0; color: var(--orange); border-color: var(--orange); animation-delay: 0.45s">🐄 Cow</span>
+    <span class="vocab-tag" style="background: #e8f5e9; color: #2e7d32; border-color: #4caf50; animation-delay: 0.5s">🐛 Caterpillar</span>
+    <span class="vocab-tag" style="background: #e3f2fd; color: #1565c0; border-color: #2196f3; animation-delay: 0.55s">🐟 Fish</span>
+    <span class="vocab-tag" style="background: #fce4ec; color: #c62828; border-color: #f44336; animation-delay: 0.6s">🐦 Bird</span>
+    <span class="vocab-tag" style="background: #f3e5f5; color: #6a1b9a; border-color: #9c27b0; animation-delay: 0.65s">🕷️ Spider</span>
+    <span class="vocab-tag" style="background: #fff9c4; color: #f57f17; border-color: #ffc107; animation-delay: 0.7s">🦗 Dragonfly</span>
+    <span class="vocab-tag" style="background: #e0f7fa; color: #00695c; border-color: #00bcd4; animation-delay: 0.75s">🐸 Frog</span>
+    <span class="vocab-tag" style="background: #e8f5e9; color: #2e7d32; border-color: #4caf50; animation-delay: 0.8s">🐞 Ladybug</span>
+    <span class="vocab-tag" style="background: #fff0e0; color: var(--orange); border-color: var(--orange); animation-delay: 0.85s">🦉 Owl</span>
+    <span class="vocab-tag" style="background: #e3f2fd; color: #1565c0; border-color: #2196f3; animation-delay: 0.9s">🐬 Dolphin</span>
+    <span class="vocab-tag" style="background: #fce4ec; color: #c62828; border-color: #f44336; animation-delay: 0.95s">🐔 Hen</span>
+    <span class="vocab-tag" style="background: #fff9c4; color: #f57f17; border-color: #ffc107; animation-delay: 1s">🍊 Orange</span>
+    <span class="vocab-tag" style="background: #f3e5f5; color: #6a1b9a; border-color: #9c27b0; animation-delay: 1.05s">⌚ Watch</span>
+    <span class="vocab-tag" style="background: #fff0e0; color: var(--orange); border-color: var(--orange); animation-delay: 1.1s">🚐 Van</span>
+    <span class="vocab-tag" style="background: #e0f7fa; color: #00695c; border-color: #00bcd4; animation-delay: 1.15s">👦 Friend</span>
+    <span class="vocab-tag" style="background: #e8f5e9; color: #2e7d32; border-color: #4caf50; animation-delay: 1.2s">🎃 Pumpkin</span>
+    <span class="vocab-tag" style="background: #e3f2fd; color: #1565c0; border-color: #2196f3; animation-delay: 1.25s">🩺 Doctor</span>
+    <span class="vocab-tag" style="background: #fce4ec; color: #c62828; border-color: #f44336; animation-delay: 1.3s">🏠 House</span>
+    <span class="vocab-tag" style="background: #fff9c4; color: #f57f17; border-color: #ffc107; animation-delay: 1.35s">🎩 Hat</span>
+    <span class="vocab-tag" style="background: #f3e5f5; color: #6a1b9a; border-color: #9c27b0; animation-delay: 1.4s">🚲 Bicycle</span>
+    <span class="vocab-tag" style="background: #e0f7fa; color: #00695c; border-color: #00bcd4; animation-delay: 1.45s">👩‍🏫 Teacher</span>
+    <span class="vocab-tag" style="background: #e8f5e9; color: #2e7d32; border-color: #4caf50; animation-delay: 1.5s">🌳 Tree</span>
+    <span class="vocab-tag" style="background: #fff0e0; color: var(--orange); border-color: var(--orange); animation-delay: 1.55s">🪑 Chair</span>
+    <span class="vocab-tag" style="background: #e3f2fd; color: #1565c0; border-color: #2196f3; animation-delay: 1.6s">✈️ Pilot</span>
+    <span class="vocab-tag" style="background: #fce4ec; color: #c62828; border-color: #f44336; animation-delay: 1.65s">❄️ Winter</span>
+    <span class="vocab-tag" style="background: #fff9c4; color: #f57f17; border-color: #ffc107; animation-delay: 1.7s">🏫 School</span>
+  </div>
+</div>
+
+<!-- FOR WHO -->
+<div class="forwho-section">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="section-tag" style="background: linear-gradient(135deg, var(--yellow), var(--orange)); color: var(--dark);">Untuk Siapa?</div>
+    <h2 class="section-title" style="color: white; margin-top: 8px;">Produk Ini Sempurna Untuk...</h2>
+  </div>
+  <div class="forwho-grid">
+    <div class="forwho-card">
+      <span class="forwho-emoji">👨‍👩‍👦</span>
+      <div class="forwho-title">Orang Tua</div>
+      <p class="forwho-desc">Yang ingin anak belajar Bahasa Inggris di rumah dengan cara yang menyenangkan dan terstruktur.</p>
+    </div>
+    <div class="forwho-card">
+      <span class="forwho-emoji">👩‍🏫</span>
+      <div class="forwho-title">Guru TK / SD</div>
+      <p class="forwho-desc">Media pembelajaran Bahasa Inggris yang siap pakai di kelas dengan materi yang terorganisir.</p>
+    </div>
+    <div class="forwho-card">
+      <span class="forwho-emoji">📚</span>
+      <div class="forwho-title">Homeschooler</div>
+      <p class="forwho-desc">Kurikulum Bahasa Inggris dasar yang lengkap untuk anak-anak yang belajar dari rumah.</p>
+    </div>
+    <div class="forwho-card">
+      <span class="forwho-emoji">🎓</span>
+      <div class="forwho-title">Les Privat</div>
+      <p class="forwho-desc">Bahan ajar siap pakai untuk pengajar les Bahasa Inggris anak. Hemat waktu menyiapkan materi!</p>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="testi-section">
+  <div style="max-width: 1100px; margin: 0 auto; text-align: center;">
+    <div class="section-tag">Testimoni</div>
+    <h2 class="section-title">Apa Kata Mereka? 💬</h2>
+  </div>
+  <div class="testi-grid" style="max-width: 1100px; margin: 40px auto 0;">
+
+    <div class="testi-card">
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Anak saya (6 tahun) langsung suka pas lihat gambar-gambarnya yang lucu! Sekarang setiap hari minta belajar sendiri. Beli workbook ini keputusan terbaik tahun ini!</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: #FFE0CC;">😊</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">Ibu Ratna W.</div>
+          <div class="testi-role">Ibu Rumah Tangga, Surabaya</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Saya guru TK, sudah pakai ini di kelas selama 2 bulan. Anak-anak lebih mudah ingat kosakata karena ada gambar + tracing. Harga murah tapi kualitas premium!</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: #E0F4FF;">👩</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">Bu Siti Rahayu</div>
+          <div class="testi-role">Guru TK, Bandung</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Praktis banget! Langsung download, langsung bisa dipakai. Saya cetak beberapa halaman untuk anak les saya. Soal pilihan gandanya bagus untuk latihan. Recommended banget!</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: #E8FFE0;">🧑</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">Pak Dimas F.</div>
+          <div class="testi-role">Pengajar Les Privat, Jakarta</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Anak saya homeschool dan ini jadi buku Bahasa Inggris favorit dia. Designnya cakep, materinya runtut dari yang gampang. Udah dipakai 3 bulan masih betah belajar!</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: #FFE0F0;">😄</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">Mama Zahra</div>
+          <div class="testi-role">Homeschool Mom, Yogyakarta</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Baru download kemarin, langsung impressed sama kualitas desainnya. Gambarnya HD, soalnya logis dan sesuai bacaan. Ini worth it banget untuk harga segini. Makasih!</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: #F0E0FF;">😍</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">Dewi Kurnia</div>
+          <div class="testi-role">Ibu Muda, Makassar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <span class="testi-quote">"</span>
+      <p class="testi-text">Saya beli buat keponakan yang mau masuk SD. Dalam 2 minggu sudah bisa baca kata-kata dasar! Metode gambar + baca + latihan soalnya efektif sekali. Highly recommended!</p>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: #E0FFFF;">🤩</div>
+        <div>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-name">Kak Aulia</div>
+          <div class="testi-role">Mahasiswi, Medan</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FAQ -->
+<div style="background-color: #FFFBF0;">
+<div class="faq-section">
+  <div style="text-align: center; margin-bottom: 40px;">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Pertanyaan yang Sering Ditanyakan</h2>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Bagaimana cara mendapatkan produk ini?</div>
+    <div class="faq-a">Setelah pembayaran dikonfirmasi, Anda akan langsung mendapat link download file PDF. Tidak perlu menunggu lama — prosesnya otomatis dan instan!</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Untuk anak usia berapa produk ini cocok?</div>
+    <div class="faq-a">Produk ini dirancang untuk anak usia 4–8 tahun yang baru mulai belajar Bahasa Inggris. Namun bisa juga dipakai oleh anak yang lebih tua sebagai pengulangan dasar.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Apakah bisa dicetak?</div>
+    <div class="faq-a">Ya! File PDF berkualitas tinggi dan bisa dicetak di kertas ukuran A4. Anda juga bisa menggunakannya langsung di tablet, laptop, atau komputer tanpa perlu dicetak.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Berapa kali file bisa diunduh?</div>
+    <div class="faq-a">Tidak ada batasan! Setelah membeli, file menjadi milik Anda sepenuhnya dan bisa diunduh serta digunakan kapan saja.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Apakah ada garansi refund?</div>
+    <div class="faq-a">Karena ini produk digital, kami tidak menyediakan refund setelah file diunduh. Namun jika ada masalah teknis pada file, kami siap membantu dan mengganti file Anda.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">Apakah materi ini sesuai kurikulum Indonesia?</div>
+    <div class="faq-a">Materi dirancang untuk membangun fondasi Bahasa Inggris dasar dengan kosakata sehari-hari. Cocok sebagai suplemen belajar di luar sekolah maupun sebagai bahan homeschooling.</div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="cta-final">
+  <div class="cta-final-inner">
+    <div style="font-size: 60px; margin-bottom: 16px;">🚀</div>
+    <h2 class="cta-final-title">Mulai Perjalanan Bahasa Inggris Anak Hari Ini!</h2>
+    <p class="cta-final-sub">Investasi terbaik untuk masa depan anak Anda. Dapatkan 75 halaman konten berkualitas hanya dengan harga secangkir kopi! ☕</p>
+    <a href="#" class="cta-final-btn">🛒 Beli Sekarang — Rp 49.000</a>
+    <div class="guarantee">
+      <span>🔒</span> Pembayaran Aman &nbsp;|&nbsp; 📥 Download Instan &nbsp;|&nbsp; ✅ Produk Bergaransi
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Readverse · Produk Digital Pendidikan Anak · Semua hak dilindungi</p>
+  <p style="margin-top: 8px;">Pertanyaan? Hubungi kami di WhatsApp atau Email</p>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Intersection Observer for animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.inside-card, .forwho-card, .testi-card').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(30px)';
+  el.style.transition = 'all 0.5s ease';
+  observer.observe(el);
+});
+</script>
+
+</body>
+</html>
